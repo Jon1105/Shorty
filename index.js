@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 const port = process.env.PORT || 3000
-const website = 'http://localhost:' + port + '/'
+const website = 'https://shorty2587.herokuapp.com/'
 
 app.get('/:key', async (request, response) => {
     const key = request.params.key
