@@ -4,6 +4,7 @@ const linkInput = document.getElementById('link-input')
 const apiLink = 'https://shorty2587.herokuapp.com/create/'
 
 function create_url() {
+    console.log('function called')
     let url = linkInput.value
     fetch(apiLink, {
         method: "POST",
@@ -17,5 +18,6 @@ function create_url() {
             urlHolder.innerHTML = ''
             errorHolder.innerHTML = 'Invalid url'
         }
+        console.log('function ended')
     })
 }
