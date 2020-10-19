@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const database = require('./api/database')
+const { join } = require('path')
 
 const app = express()
 const db = new database('./api/data.json')
@@ -12,7 +13,7 @@ const port = process.env.PORT || 3000
 const website = 'https://shorty2587.herokuapp.com/'
 
 app.get('/', (request, response) => {
-    response.sendFile('./website/index.html')
+    response.sendFile(join(process.cwd(), 'website', 'index.html'))
 })
 
 app.get('/:key', async (request, response) => {
