@@ -7,13 +7,14 @@ const app = express()
 const db = new database('./api/data.json')
 
 app.use(express.json())
+app.use(express.static(__dirname, website))
 app.use(cors())
 
 const port = process.env.PORT || 3000
 const website = 'https://shorty2587.herokuapp.com/'
 
 app.get('/', (request, response) => {
-    response.sendFile(join(process.cwd(), 'website', 'index.html'))
+    response.sendFile(join(__dirname, 'website', 'index.html'))
 })
 
 app.get('/:key', async (request, response) => {
