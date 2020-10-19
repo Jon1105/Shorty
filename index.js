@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000
 const website = 'https://shorty2587.herokuapp.com/'
 
 app.get('/', (request, response) => {
-    response.sendFile('website/index.html')
+    response.sendFile('./website/index.html')
 })
 
 app.get('/:key', async (request, response) => {
