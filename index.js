@@ -1,9 +1,9 @@
 const express = require('express')
 const cors = require('cors')
-const database = require('api/database')
+const database = require('./api/database')
 
 const app = express()
-const db = new database('api/data.json')
+const db = new database('./api/data.json')
 
 app.use(express.json())
 app.use(cors())
