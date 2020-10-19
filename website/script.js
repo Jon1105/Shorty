@@ -1,16 +1,15 @@
-const urlHolder = document.getElementById('url-place')
-const errorHolder = document.getElementById('error-place')
-const linkInput = document.getElementById('link-input')
 const apiLink = 'https://shorty2587.herokuapp.com/create/'
 
 function create_url() {
     console.log('function called')
-    let url = linkInput.value
+    let url = document.getElementById('link-input').value
     fetch(apiLink, {
         method: "POST",
         body: JSON.stringify({ 'url': url })
     }).then((response) => {
         let short = JSON.parse(response.body)['url']
+        const urlHolder = document.getElementById('url-place')
+        const errorHolder = document.getElementById('error-place')
         if (short) {
             urlHolder.innerHTML = short
             errorHolder.innerHTML = ''
