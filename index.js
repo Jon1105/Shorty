@@ -1,15 +1,19 @@
 const express = require('express')
 const cors = require('cors')
-const database = require('./database')
+const database = require('api/database')
 
 const app = express()
-const db = new database('./data.json')
+const db = new database('api/data.json')
 
 app.use(express.json())
 app.use(cors())
 
 const port = process.env.PORT || 3000
 const website = 'https://shorty2587.herokuapp.com/'
+
+app.get('/', (request, response) => {
+    response.sendFile('website/index.html')
+})
 
 app.get('/:key', async (request, response) => {
     const key = request.params.key
@@ -21,7 +25,7 @@ app.get('/:key', async (request, response) => {
     }
 })
 
-app.post('/reg/', async (request, response) => {
+app.post('/create/', async (request, response) => {
     let link = request.body.url
     if (db.isValidURL(link)) {
         const key = await db.write_url(link)
