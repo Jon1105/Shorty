@@ -1,4 +1,4 @@
-const apiLink = 'http://localhost:5000/create/'
+const apiLink = 'https://shorty2587.herokuapp.com/create/'
 const urlHolder = document.getElementById('url-place')
 const errorHolder = document.getElementById('error-place')
 const urlBox = document.getElementById('link-input')
