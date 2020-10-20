@@ -8,6 +8,7 @@ function create_url() {
         body: JSON.stringify({ 'url': url })
     }).then((response) => {
         let short = JSON.parse(response.body)['url']
+        console.log(response)
         const urlHolder = document.getElementById('url-place')
         const errorHolder = document.getElementById('error-place')
         if (short) {

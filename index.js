@@ -29,6 +29,7 @@ app.get('/:key', async (request, response) => {
 
 app.post('/create/', async (request, response) => {
     let link = request.body.url
+    console.log(request.body)
     if (db.isValidURL(link)) {
         const key = await db.write_url(link)
         response.status(200).send(JSON.stringify({ 'url': website + key }))
