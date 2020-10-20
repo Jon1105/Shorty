@@ -7,17 +7,18 @@ async function create_url() {
         method: "POST",
         body: JSON.stringify({ 'url': url })
     })
-    let short = JSON.parse(response.body['url'])
-    console.log(short)
-    const urlHolder = document.getElementById('url-place')
-    const errorHolder = document.getElementById('error-place')
-    if (short) {
-        urlHolder.innerHTML = short
-        errorHolder.innerHTML = ''
-    } else {
-        urlHolder.innerHTML = ''
-        errorHolder.innerHTML = 'Invalid url'
-    }
-    console.log('function ended')
+    console.log(response)
+    // let short = JSON.parse(response.body['url'])
+    // console.log(short)
+    // const urlHolder = document.getElementById('url-place')
+    // const errorHolder = document.getElementById('error-place')
+    // if (short) {
+    //     urlHolder.innerHTML = short
+    //     errorHolder.innerHTML = ''
+    // } else {
+    //     urlHolder.innerHTML = ''
+    //     errorHolder.innerHTML = 'Invalid url'
+    // }
+    // console.log('function ended')
 
 }
