@@ -21,20 +21,19 @@ app.get('/:key', async (request, response) => {
     const key = request.params.key
     let url = await db.get_url(key)
     if (url != undefined) {
-        response.redirect(url)
+        response.redirect(200, url)
     } else {
-        response.status(400).send('Invalid short link')
+        response.status(400).json({ errorCode: 400, errorMessage: 'Invalid short link' })
     }
 })
 
 app.post('/create/', async (request, response) => {
     let link = request.body.url
-    console.log(request.body)
-    if (!link) { response.status(400).send('No url provided') }
+    if (!link) { response.status(400).json({ errorCode: 400, errorMessage: 'No url' }) }
     else if (db.isValidURL(link)) {
         const key = await db.write_url(link)
-        response.status(200).send(JSON.stringify({ 'url': website + key }))
-    } else { response.status(400).send('Invalid url') }
+        response.status(200).json({ 'url': website + key })
+    } else { response.status(400).json({ errorCode: 400, errorMessage: 'Invalid url' }) }
 })
 
 
