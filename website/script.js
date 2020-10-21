@@ -1,22 +1,24 @@
 const apiLink = 'https://shorty2587.herokuapp.com/create/'
-const urlHolder = document.getElementById('url-place')
-const errorHolder = document.getElementById('error-place')
-const urlBox = document.getElementById('link-input')
 
 async function create_url() {
-    let url = urlBox.value
-    urlHolder.innerHTML = ''
-    errorHolder.innerHTML = ''
+    const output = document.getElementById('output')
+    const urlBox = document.getElementById('link-input')
+    output.innerHTML = ''
+    output.classList.remove('error')
     let response = await fetch(apiLink, {
         method: 'POST',
-        body: JSON.stringify({ 'url': url }),
+        body: JSON.stringify({ 'url': urlBox.value }),
         headers: { 'content-type': 'application/json' }
     })
     let body = JSON.parse(await response.text())
     if (!body.error) {
-        urlHolder.innerHTML = contents.url
+        output.innerHTML = get_link(body.url)
     } else {
-        errorHolder.innerHTML = 'Invalid url'
+        output.innerHTML = body.error
+        output.classList.add('error')
     }
+}
 
+function get_link(url) {
+    return `<a id=\"output-link\" href=\"${url}\">${url}</a>`
 }

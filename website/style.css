@@ -1,7 +1,77 @@
-#url-place {
-    color: royalblue;
+html, body {
+    font-family: 'Fira Code', monospace;
+    background-color: #21262e;
 }
 
-#error-place{
-    color: red;
+h1#title {
+    color: springgreen;
+    text-align: center;
+    letter-spacing: 6px;
+}
+
+div#main {
+    text-align: center;
+}
+
+input#link-input {
+    border:0;
+    /* border-bottom:2px solid #555;  */
+    border-radius: 5px;
+    background:black;
+    width: 50%;
+    padding: 5px 10px;
+    font-size:16px;
+    font-family: 'Fira Code', monospace;
+}
+
+input#link-input:valid{
+    color: yellowgreen;
+}
+input#link-input:invalid{
+    color: orangered;
+}
+
+input#link-input:focus {
+    outline: 0;
+    /* border-bottom:2px solid red;  */
+}
+
+input#link-submit {
+    border: 0;
+    outline: 0;
+    background-color: #ba54ae;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: springgreen;
+    font-family: 'Fira Code', monospace;
+}
+
+svg#github-logo {
+    height: 30px;
+}
+
+p#output a#output-link {
+    color: teal;
+}
+p#output.error {
+    color: orangered;
+}
+
+a#git-link {
+    text-decoration: none;
+    color: orchid;
+    vertical-align: center;
+}
+a#git-link:hover {
+    color: rebeccapurple;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 10px;
+    margin: 0;
+    text-align: center;
 }
