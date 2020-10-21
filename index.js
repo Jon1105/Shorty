@@ -43,5 +43,8 @@ app.post('/create/', async (request, response) => {
     }
 })
 
+app.get('/', (request, response) => {
+    response.sendFile(path.join(__dirname, 'website', '404.html'))
+})
 
 app.listen(port)
