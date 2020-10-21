@@ -17,6 +17,9 @@ class Database {
     async write_url(url) {
         const key = await this.__new_key()
         const contents = await this.__read()
+        if (!(url.startsWith('https://') || url.startsWith('http://'))) {
+            url = 'http://' + url
+        }
         contents[key] = url
         await writeFile(this.path, JSON.stringify(contents))
         return key
