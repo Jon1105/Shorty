@@ -20,11 +20,8 @@ app.get('/', (request, response) => {
 app.get('/:key', async (request, response) => {
     const key = request.params.key
     let url = await db.get_url(key)
-    if (key.length != 6) {
-        response.status(400).json({ errorCode: 400, error: 'Invalid key' })
-    }
-    else if (url == undefined) {
-        response.status(400).json({ errorCode: 400, error: 'No mathing url' })
+    if (key.length != 6 || url == undefined) {
+        response.sendFile(path.join(__dirname, 'website', '404.html'))
     }
     else {
         response.status(200).redirect(url)
@@ -41,10 +38,6 @@ app.post('/create/', async (request, response) => {
     } else {
         response.status(400).json({ errorCode: 400, error: 'Invalid url' })
     }
-})
-
-app.get('/', (request, response) => {
-    response.sendFile(path.join(__dirname, 'website', '404.html'))
 })
 
 app.listen(port)
