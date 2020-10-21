@@ -1,6 +1,8 @@
 html, body {
     font-family: 'Fira Code', monospace;
     background-color: #21262e;
+    height: 100%;
+    overflow: hidden;
 }
 
 h1#title {
@@ -55,6 +57,10 @@ input#link-submit {
     font-size: 16px;
     color: springgreen;
     font-family: 'Fira Code', monospace;
+}
+
+img#confused-gif {
+    max-width: 100%;
 }
 
 svg#github-logo {
