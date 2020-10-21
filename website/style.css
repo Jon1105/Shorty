@@ -4,9 +4,21 @@ html, body {
 }
 
 h1#title {
-    color: springgreen;
     text-align: center;
+}
+
+h1#title a {
+    color: springgreen;
+    text-decoration: none;
     letter-spacing: 6px;
+}
+
+h3#errorMsg {
+    color: orangered;
+}
+
+div#error {
+    text-align: center;
 }
 
 div#main {
@@ -15,7 +27,6 @@ div#main {
 
 input#link-input {
     border:0;
-    /* border-bottom:2px solid #555;  */
     border-radius: 5px;
     background:black;
     width: 50%;
