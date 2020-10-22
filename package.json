@@ -4,7 +4,6 @@
   "description": "Simple url shortener api made with node.js and express",
   "main": "index.js",
   "scripts": {
-    "test": "node .",
     "start": "node index.js"
   },
   "repository": {
