@@ -10,7 +10,7 @@ h1#title {
 }
 
 h1#title a {
-    color: springgreen;
+    color: #00ff7f;
     text-decoration: none;
     letter-spacing: 6px;
 }
@@ -37,26 +37,30 @@ input#link-input {
     font-family: 'Fira Code', monospace;
 }
 
-input#link-input:valid{
+input#link-input.valid{
     color: yellowgreen;
 }
-input#link-input:invalid{
+
+input#link-input{
     color: orangered;
 }
 
 input#link-input:focus {
     outline: 0;
-    /* border-bottom:2px solid red;  */
 }
 
 input#link-submit {
     border: 0;
     outline: 0;
-    background-color: #ba54ae;
+    background-color: rebeccapurple;
     padding: 5px 10px;
     font-size: 16px;
-    color: springgreen;
+    color: #24b36b;
     font-family: 'Fira Code', monospace;
+}
+
+input#link-submit:hover {
+    background-color: orchid;
 }
 
 img#confused-gif {
@@ -68,7 +72,7 @@ svg#github-logo {
 }
 
 p#output a#output-link {
-    color: teal;
+    color: #24b36b;
 }
 p#output.error {
     color: orangered;
@@ -76,11 +80,11 @@ p#output.error {
 
 a#git-link {
     text-decoration: none;
-    color: orchid;
+    color:rebeccapurple;
     vertical-align: center;
 }
 a#git-link:hover {
-    color: rebeccapurple;
+    color: orchid;
 }
 
 footer {

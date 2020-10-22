@@ -5,6 +5,11 @@ async function create_url() {
     const urlBox = document.getElementById('link-input')
     output.innerHTML = ''
     output.classList.remove('error')
+    if (!validator.isURL(urlBox.value)) {
+        output.innerHTML = 'Invalid Link'
+        output.classList.add('error')
+        return
+    }
     let response = await fetch(apiLink, {
         method: 'POST',
         body: JSON.stringify({ 'url': urlBox.value }),
@@ -12,13 +17,14 @@ async function create_url() {
     })
     let body = JSON.parse(await response.text())
     if (!body.error) {
-        output.innerHTML = get_link(body.url)
+        output.innerHTML = `<a id=\"output-link\" href=\"${body.url}\">${body.url}</a>`
     } else {
         output.innerHTML = body.error
         output.classList.add('error')
     }
 }
 
-function get_link(url) {
-    return `<a id=\"output-link\" href=\"${url}\">${url}</a>`
+function validateInput() {
+    const input = document.getElementById('link-input')
+    input.classList.toggle('valid', validator.isURL(input.value))
 }

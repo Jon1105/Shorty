@@ -8,12 +8,14 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap">
+    <script src="validator.min.js"></script>
 </head>
 
 <body>
     <h1 id="title"><a href="">Shorty</a></h1>
     <div id="main">
-        <input type="url" name="link" id="link-input" placeholder="URL to shorten" autocomplete="off">
+        <input type="url" name="link" id="link-input" placeholder="URL to shorten" autocomplete="off"
+            oninput="validateInput()">
         <input type="button" value="Shorten" id="link-submit" onclick="create_url()">
         <p id="output"></p>
     </div>

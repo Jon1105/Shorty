@@ -29,16 +29,6 @@ class Database {
         return Math.floor((Math.random() * (high - low)) + low)
     }
 
-    isValidURL(str) {
-        var pattern = new RegExp('^(https?:\\/\\/)?' +
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
-            '((\\d{1,3}\\.){3}\\d{1,3}))' +
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-            '(\\?[;&a-z\\d%_.~+=-]*)?' +
-            '(\\#[-a-z\\d_]*)?$', 'i');
-        return !!pattern.test(str);
-    }
-
     async __new_key() {
         const chars = 'abcdefghijklmnopqrstuvwxyz1234567890'
         let key = ''

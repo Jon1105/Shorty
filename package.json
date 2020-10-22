@@ -24,7 +24,8 @@
   "homepage": "https://github.com/Jon1105/Shorty#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "validator": "^13.1.17"
   },
   "engines": {
     "node": "12.x"

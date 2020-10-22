@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const database = require('./api/database')
 const path = require('path')
+const validator = require('validator')
 
 const app = express()
 const db = new database('./api/data.json')
@@ -33,7 +34,7 @@ app.post('/create/', async (request, response) => {
     if (!link) {
         response.status(400).json({ errorCode: 400, error: 'No url provided' })
     }
-    else if (db.isValidURL(link)) {
+    else if (validator.isURL(url)) {
         response.status(200).json({ 'url': website + await db.write_url(link) })
     } else {
         response.status(400).json({ errorCode: 400, error: 'Invalid url' })
