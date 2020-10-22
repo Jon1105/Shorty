@@ -9,7 +9,6 @@ const db = new database('./api/data.json')
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'website')))
-app.use(cors())
 
 const port = process.env.PORT || 3000
 const website = 'https://shorty2587.herokuapp.com/'
@@ -29,12 +28,12 @@ app.get('/:key', async (request, response) => {
     }
 })
 
-app.post('/create/', async (request, response) => {
+app.post('/create/', cors(), async (request, response) => {
     let link = request.body.url
     if (!link) {
         response.status(400).json({ errorCode: 400, error: 'No url provided' })
     }
-    else if (validator.isURL(url)) {
+    else if (validator.isURL(link)) {
         response.status(200).json({ 'url': website + await db.write_url(link) })
     } else {
         response.status(400).json({ errorCode: 400, error: 'Invalid url' })
