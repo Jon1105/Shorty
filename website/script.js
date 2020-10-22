@@ -1,5 +1,5 @@
-// const apiLink = 'https://shorty2587.herokuapp.com/create/'
-const apiLink = 'http://localhost:3000/create/'
+const apiLink = 'https://shorty2587.herokuapp.com/create/'
+// const apiLink = 'http://localhost:3000/create/'
 
 async function create_url() {
     console.log('Function called')
