@@ -14,30 +14,26 @@ const port = process.env.PORT || 3000
 const website = 'https://shorty2587.herokuapp.com/'
 
 app.get('/', (request, response) => {
-    response.sendFile(path.join(__dirname, 'website', 'index.html'))
+    response.status(200).sendFile(path.join(__dirname, 'website', 'index.html'))
 })
 
 app.get('/:key', async (request, response) => {
     const key = request.params.key
     let url = await db.get_url(key)
-    if (key.length != 6 || url == undefined) {
-        response.sendFile(path.join(__dirname, 'website', '404.html'))
+    if (url == undefined) {
+        response.status(404).sendFile(path.join(__dirname, 'website', '404.html'))
     }
     else {
         response.status(200).redirect(url)
     }
 })
 
-app.post('/create/', cors(), async (request, response) => {
-    let link = request.body.url
-    if (!link) {
-        response.status(400).json({ errorCode: 400, error: 'No url provided' })
-    }
-    else if (validator.isURL(link)) {
-        response.status(200).json({ 'url': website + await db.write_url(link) })
-    } else {
-        response.status(400).json({ errorCode: 400, error: 'Invalid url' })
-    }
+app.post('/api/create/', cors(), async (request, response) => {
+    const [key, error, statusCode] = db.create(request.body.url, request.body.key);
+    let responseJson
+    if (error == null) responseJson = {'url': website + key}
+    else responseJson = {'error': error}
+    response.status(statusCode).json(responseJson)
 })
 
 app.listen(port)
