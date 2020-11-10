@@ -33,3 +33,9 @@ function validateInput() {
     const input = document.getElementById('link-input')
     input.classList.toggle('valid', validator.isURL(input.value))
 }
+
+function toggleCutstomKey() {
+    const checkBox = document.getElementById('customKeyToggle')
+    const customKeyDiv = document.getElementById('custom-key')
+    customKeyDiv.style.display = (checkBox.checked) ? 'block' : 'none'
+}
