@@ -1,4 +1,5 @@
 const { readFile, writeFile } = require("fs").promises
+const validator = require('validator')
 
 const chars = 'abcdefghijklmnopqrstuvwxyz1234567890'
 
@@ -40,12 +41,13 @@ class Database {
     }
 
     async create(url, key) {
-        if (url == undefined) return [null, new Error('No url provided'), 400]
+        if (url == undefined) return [null, new Error('No url provided').message, 400]
+        if (!validator.isURL(url)) return [null, new Error('Invalid url').message, 400]
         else if (key == undefined) {
             return [await this.__write_url(url, await this.__new_key()), null, 200]
         } else {
             if (await this.get_url(key) != undefined) {
-                return [null, new Error('Key unavailable'), 409]
+                return [null, new Error('Key unavailable').message, 409]
             }
             return [await this.__write_url(url, key), null, 200]
         }

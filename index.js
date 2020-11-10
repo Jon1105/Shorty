@@ -2,13 +2,14 @@ const express = require('express')
 const cors = require('cors')
 const database = require('./api/database')
 const path = require('path')
-const validator = require('validator')
+
 
 const app = express()
 const db = new database('./api/data.json')
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'website')))
+app.use(cors())
 
 const port = process.env.PORT || 3000
 const website = 'https://shorty2587.herokuapp.com/'
@@ -29,10 +30,11 @@ app.get('/:key', async (request, response) => {
 })
 
 app.post('/api/create/', cors(), async (request, response) => {
-    const [key, error, statusCode] = db.create(request.body.url, request.body.key);
+    const [key, error, statusCode] = await db.create(request.body.url, request.body.key);
     let responseJson
-    if (error == null) responseJson = {'url': website + key}
-    else responseJson = {'error': error}
+    if (error == null) responseJson = { 'url': website + key }
+    else responseJson = { 'error': error }
+    console.log(responseJson)
     response.status(statusCode).json(responseJson)
 })
 
