@@ -1,5 +1,4 @@
 const express = require('express')
-const cors = require('cors')
 const database = require('./api/database')
 const path = require('path')
 
