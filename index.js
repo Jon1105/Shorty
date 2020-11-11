@@ -9,7 +9,6 @@ const db = new database('./api/data.json')
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'website')))
-app.use(cors())
 
 const port = process.env.PORT || 3000
 const website = 'https://shorty2587.herokuapp.com/'
