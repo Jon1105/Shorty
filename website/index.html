@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shorty: url shortener</title>
-    <script src="script.js"></script>
+    <script src="./site.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap">
     <script src="validator.min.js"></script>
@@ -19,6 +19,10 @@
         <input type="button" value="Shorten" id="link-submit" onclick="create_url()">
         <p id="output"></p>
     </div>
+    <input type="checkbox" name="customKey" id="customKeyToggle" onclick="toggleCutstomKey()" value=true>
+    <span id="custom-key">
+        <input type="text" name="key" id="key-input" placeholder="Custom key">
+    </span>
     <footer>
         <a href="https://github.com/Jon1105/Shorty" id="git-link" target="_blank">
             <svg id="github-logo" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
