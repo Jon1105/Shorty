@@ -1,9 +1,6 @@
 package database
 
-import (
-	"errors"
-	urlPkg "net/url"
-)
+import "errors"
 
 var data = map[string]string{
 	"12345": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -24,10 +21,6 @@ func SetUrl(id, url string) error {
 		return errors.New("invalid key: already in use")
 	}
 
-	var urlRef, err = urlPkg.Parse(url)
-	if err != nil {
-		return errors.New("invalid url")
-	}
-	data[id] = urlRef.String()
+	data[id] = url
 	return nil
 }
